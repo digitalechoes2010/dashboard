@@ -5,7 +5,7 @@ const fs = require('fs');
 const app = express();
 app.use(express.json());
 app.use('/uploads',express.static(__dirname+"/uploads"));
-const port = 8000
+const port = 80
 app.get('/*',(req,res)=>{return res.status(404).json({"msg":"Not Found!"})})
 app.post('/save-website', async(req, res) => {
     try {
