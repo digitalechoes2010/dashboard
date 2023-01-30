@@ -13,7 +13,7 @@ app.post('/save-website', async(req, res) => {
         const $ = cheerio.load(html);
         const text = $('body').text();
         fs.writeFileSync(`./uploads/${new URL(req.body.websiteUrl).hostname.replace(/^www\./i, '').split('.')[0]}.txt`, text);
-        res.json({ message: 'Website content saved successfully!' });
+        res.json({ message: 'Website content saved successfully!','file':`${new URL(req.body.websiteUrl).hostname.replace(/^www\./i, '').split('.')[0]}.txt` });
       } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Error saving website content' });
